@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "subscriptions",
+  "info": {
+    "singularName": "subscription",
+    "pluralName": "subscriptions",
+    "displayName": "Subscription",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "id_woo": {
+      "type": "integer"
+    },
+    "parent_id": {
+      "type": "integer"
+    },
+    "status_woo": {
+      "type": "string"
+    },
+    "total": {
+      "type": "decimal"
+    },
+    "customer_id": {
+      "type": "integer"
+    },
+    "billing_period": {
+      "type": "string"
+    },
+    "billing_interval": {
+      "type": "integer"
+    },
+    "start_date_gmt": {
+      "type": "datetime"
+    },
+    "trial_end_date_gmt": {
+      "type": "datetime"
+    },
+    "next_payment_date_gmt": {
+      "type": "datetime"
+    },
+    "last_payment_date_gmt": {
+      "type": "datetime"
+    },
+    "cancelled_date_gmt": {
+      "type": "datetime"
+    },
+    "end_date_gmt": {
+      "type": "datetime"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "subscriptions"
+    },
+    "instances": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::instance.instance",
+      "mappedBy": "subscription"
+    }
+  }
+}
