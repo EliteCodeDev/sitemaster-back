@@ -480,7 +480,6 @@ export interface PluginUsersPermissionsUser
       'oneToMany',
       'api::subscription.subscription'
     >;
-    websites: Schema.Attribute.Relation<'oneToMany', 'api::website.website'>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -703,15 +702,15 @@ export interface ApiWebsiteWebsite extends Struct.CollectionTypeSchema {
     billingCycle: Schema.Attribute.String;
     idHotmart: Schema.Attribute.Integer;
     isActive: Schema.Attribute.Boolean;
-    user: Schema.Attribute.Relation<
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
     server_url: Schema.Attribute.String;
     subscription: Schema.Attribute.Relation<
       'manyToOne',
       'api::subscription.subscription'
     >;
+    purpose: Schema.Attribute.String;
+    description: Schema.Attribute.String;
+    domainName: Schema.Attribute.String;
+    domainExtension: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
