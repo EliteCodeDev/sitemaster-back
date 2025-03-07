@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "websites",
+  "info": {
+    "singularName": "website",
+    "pluralName": "websites",
+    "displayName": "Website",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "websiteName": {
+      "type": "string"
+    },
+    "apiKey": {
+      "type": "string"
+    },
+    "websiteId": {
+      "type": "string"
+    },
+    "startDate": {
+      "type": "datetime"
+    },
+    "endDate": {
+      "type": "datetime"
+    },
+    "billingCycle": {
+      "type": "string"
+    },
+    "idHotmart": {
+      "type": "integer"
+    },
+    "isActive": {
+      "type": "boolean"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "websites"
+    },
+    "server_url": {
+      "type": "string"
+    },
+    "subscription": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::subscription.subscription",
+      "inversedBy": "websites"
+    }
+  }
+}

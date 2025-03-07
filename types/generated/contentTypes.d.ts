@@ -480,6 +480,7 @@ export interface PluginUsersPermissionsUser
       'oneToMany',
       'api::subscription.subscription'
     >;
+    websites: Schema.Attribute.Relation<'oneToMany', 'api::website.website'>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -666,6 +667,7 @@ export interface ApiSubscriptionSubscription
       'plugin::users-permissions.user'
     >;
     instances: Schema.Attribute.Relation<'oneToMany', 'api::instance.instance'>;
+    websites: Schema.Attribute.Relation<'oneToMany', 'api::website.website'>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -677,6 +679,50 @@ export interface ApiSubscriptionSubscription
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::subscription.subscription'
+    >;
+  };
+}
+
+export interface ApiWebsiteWebsite extends Struct.CollectionTypeSchema {
+  collectionName: 'websites';
+  info: {
+    singularName: 'website';
+    pluralName: 'websites';
+    displayName: 'Website';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    websiteName: Schema.Attribute.String;
+    apiKey: Schema.Attribute.String;
+    websiteId: Schema.Attribute.String;
+    startDate: Schema.Attribute.DateTime;
+    endDate: Schema.Attribute.DateTime;
+    billingCycle: Schema.Attribute.String;
+    idHotmart: Schema.Attribute.Integer;
+    isActive: Schema.Attribute.Boolean;
+    user: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    server_url: Schema.Attribute.String;
+    subscription: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::subscription.subscription'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::website.website'
     >;
   };
 }
@@ -1061,6 +1107,7 @@ declare module '@strapi/strapi' {
       'api::product.product': ApiProductProduct;
       'api::store.store': ApiStoreStore;
       'api::subscription.subscription': ApiSubscriptionSubscription;
+      'api::website.website': ApiWebsiteWebsite;
       'admin::permission': AdminPermission;
       'admin::user': AdminUser;
       'admin::role': AdminRole;

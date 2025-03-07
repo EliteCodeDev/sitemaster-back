@@ -62,6 +62,12 @@
       "relation": "oneToMany",
       "target": "api::instance.instance",
       "mappedBy": "subscription"
+    },
+    "websites": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::website.website",
+      "mappedBy": "subscription"
     }
   }
 }
