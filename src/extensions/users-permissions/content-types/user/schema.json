@@ -88,12 +88,6 @@
       "relation": "oneToMany",
       "target": "api::subscription.subscription",
       "mappedBy": "user"
-    },
-    "websites": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::website.website",
-      "mappedBy": "user"
     }
   }
 }

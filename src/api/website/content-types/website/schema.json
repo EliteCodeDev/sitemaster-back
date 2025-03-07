@@ -36,12 +36,6 @@
     "isActive": {
       "type": "boolean"
     },
-    "user": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "websites"
-    },
     "server_url": {
       "type": "string"
     },
@@ -50,6 +44,18 @@
       "relation": "manyToOne",
       "target": "api::subscription.subscription",
       "inversedBy": "websites"
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "domainName": {
+      "type": "string"
+    },
+    "domainExtension": {
+      "type": "string"
     }
   }
 }
