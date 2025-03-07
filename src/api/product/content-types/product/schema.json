@@ -4,10 +4,11 @@
   "info": {
     "singularName": "product",
     "pluralName": "products",
-    "displayName": "Product"
+    "displayName": "Product",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -15,13 +16,27 @@
       "type": "string"
     },
     "billing_period": {
-      "type": "string"
+      "type": "enumeration",
+      "enum": [
+        "mensual",
+        "anual"
+      ],
+      "required": true
     },
-    "billing_interval": {
-      "type": "integer"
+    "price": {
+      "type": "decimal",
+      "required": true
     },
-    "id_woo_product": {
-      "type": "integer"
+    "features": {
+      "type": "json"
+    },
+    "featured": {
+      "type": "boolean",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "required": true
     }
   }
 }

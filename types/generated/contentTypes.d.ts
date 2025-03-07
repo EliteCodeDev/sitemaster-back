@@ -583,15 +583,19 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     singularName: 'product';
     pluralName: 'products';
     displayName: 'Product';
+    description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     name: Schema.Attribute.String;
-    billing_period: Schema.Attribute.String;
-    billing_interval: Schema.Attribute.Integer;
-    id_woo_product: Schema.Attribute.Integer;
+    billing_period: Schema.Attribute.Enumeration<['mensual', 'anual']> &
+      Schema.Attribute.Required;
+    price: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    features: Schema.Attribute.JSON;
+    featured: Schema.Attribute.Boolean & Schema.Attribute.Required;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -680,6 +684,33 @@ export interface ApiSubscriptionSubscription
       'oneToMany',
       'api::subscription.subscription'
     >;
+  };
+}
+
+export interface ApiSuportSuport extends Struct.CollectionTypeSchema {
+  collectionName: 'suports';
+  info: {
+    singularName: 'suport';
+    pluralName: 'suports';
+    displayName: 'Suport';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Schema.Attribute.String;
+    description: Schema.Attribute.String;
+    url: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::suport.suport'>;
   };
 }
 
@@ -1107,6 +1138,7 @@ declare module '@strapi/strapi' {
       'api::product.product': ApiProductProduct;
       'api::store.store': ApiStoreStore;
       'api::subscription.subscription': ApiSubscriptionSubscription;
+      'api::suport.suport': ApiSuportSuport;
       'api::website.website': ApiWebsiteWebsite;
       'admin::permission': AdminPermission;
       'admin::user': AdminUser;
