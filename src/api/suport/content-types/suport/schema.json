@@ -8,7 +8,7 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -19,6 +19,18 @@
       "type": "string"
     },
     "url": {
+      "type": "string"
+    },
+    "buttonText": {
+      "type": "string"
+    },
+    "featured": {
+      "type": "boolean"
+    },
+    "buttonTarget": {
+      "type": "string"
+    },
+    "icon": {
       "type": "string"
     }
   }

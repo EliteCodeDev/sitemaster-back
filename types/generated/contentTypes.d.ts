@@ -695,12 +695,16 @@ export interface ApiSuportSuport extends Struct.CollectionTypeSchema {
     description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     name: Schema.Attribute.String;
     description: Schema.Attribute.String;
     url: Schema.Attribute.String;
+    buttonText: Schema.Attribute.String;
+    featured: Schema.Attribute.Boolean;
+    buttonTarget: Schema.Attribute.String;
+    icon: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -742,6 +746,7 @@ export interface ApiWebsiteWebsite extends Struct.CollectionTypeSchema {
     description: Schema.Attribute.String;
     domainName: Schema.Attribute.String;
     domainExtension: Schema.Attribute.String;
+    layout: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
