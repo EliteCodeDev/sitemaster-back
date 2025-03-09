@@ -554,6 +554,7 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     features: Schema.Attribute.JSON;
     featured: Schema.Attribute.Boolean & Schema.Attribute.Required;
     url: Schema.Attribute.String & Schema.Attribute.Required;
+    description: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
