@@ -701,6 +701,7 @@ export interface ApiWebsiteWebsite extends Struct.CollectionTypeSchema {
     domainName: Schema.Attribute.String;
     domainExtension: Schema.Attribute.String;
     layout: Schema.Attribute.String;
+    initConfiguration: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
