@@ -732,11 +732,6 @@ export interface ApiWebsiteWebsite extends Struct.CollectionTypeSchema {
     websiteName: Schema.Attribute.String;
     apiKey: Schema.Attribute.String;
     websiteId: Schema.Attribute.String;
-    startDate: Schema.Attribute.DateTime;
-    endDate: Schema.Attribute.DateTime;
-    billingCycle: Schema.Attribute.String;
-    idHotmart: Schema.Attribute.Integer;
-    isActive: Schema.Attribute.Boolean;
     server_url: Schema.Attribute.String;
     subscription: Schema.Attribute.Relation<
       'manyToOne',
