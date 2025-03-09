@@ -471,10 +471,6 @@ export interface PluginUsersPermissionsUser
     >;
     name: Schema.Attribute.String;
     phone: Schema.Attribute.String;
-    freetrials: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::freetrial.freetrial'
-    >;
     instances: Schema.Attribute.Relation<'oneToMany', 'api::instance.instance'>;
     subscriptions: Schema.Attribute.Relation<
       'oneToMany',
@@ -491,43 +487,6 @@ export interface PluginUsersPermissionsUser
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'plugin::users-permissions.user'
-    >;
-  };
-}
-
-export interface ApiFreetrialFreetrial extends Struct.CollectionTypeSchema {
-  collectionName: 'freetrials';
-  info: {
-    singularName: 'freetrial';
-    pluralName: 'freetrials';
-    displayName: 'Freetrial';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    startDate: Schema.Attribute.DateTime;
-    endDate: Schema.Attribute.DateTime;
-    instanceName: Schema.Attribute.String;
-    apiKey: Schema.Attribute.String;
-    instanceId: Schema.Attribute.String;
-    user: Schema.Attribute.Relation<
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
-    url: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    publishedAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::freetrial.freetrial'
     >;
   };
 }
@@ -771,11 +730,6 @@ export interface ApiWebsiteWebsite extends Struct.CollectionTypeSchema {
     websiteName: Schema.Attribute.String;
     apiKey: Schema.Attribute.String;
     websiteId: Schema.Attribute.String;
-    startDate: Schema.Attribute.DateTime;
-    endDate: Schema.Attribute.DateTime;
-    billingCycle: Schema.Attribute.String;
-    idHotmart: Schema.Attribute.Integer;
-    isActive: Schema.Attribute.Boolean;
     server_url: Schema.Attribute.String;
     subscription: Schema.Attribute.Relation<
       'manyToOne',
@@ -786,6 +740,7 @@ export interface ApiWebsiteWebsite extends Struct.CollectionTypeSchema {
     domainName: Schema.Attribute.String;
     domainExtension: Schema.Attribute.String;
     layout: Schema.Attribute.String;
+    initConfiguration: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -1176,7 +1131,6 @@ declare module '@strapi/strapi' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::freetrial.freetrial': ApiFreetrialFreetrial;
       'api::instance.instance': ApiInstanceInstance;
       'api::product.product': ApiProductProduct;
       'api::store.store': ApiStoreStore;

@@ -21,21 +21,6 @@
     "websiteId": {
       "type": "string"
     },
-    "startDate": {
-      "type": "datetime"
-    },
-    "endDate": {
-      "type": "datetime"
-    },
-    "billingCycle": {
-      "type": "string"
-    },
-    "idHotmart": {
-      "type": "integer"
-    },
-    "isActive": {
-      "type": "boolean"
-    },
     "server_url": {
       "type": "string"
     },
@@ -58,6 +43,9 @@
       "type": "string"
     },
     "layout": {
+      "type": "string"
+    },
+    "initConfiguration": {
       "type": "string"
     }
   }
