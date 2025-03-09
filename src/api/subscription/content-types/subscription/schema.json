@@ -68,6 +68,12 @@
       "relation": "oneToMany",
       "target": "api::website.website",
       "mappedBy": "subscription"
+    },
+    "vps_service": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::vps-service.vps-service",
+      "mappedBy": "subscription"
     }
   }
 }

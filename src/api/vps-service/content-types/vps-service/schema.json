@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "vps_services",
+  "info": {
+    "singularName": "vps-service",
+    "pluralName": "vps-services",
+    "displayName": "VpsService",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ip": {
+      "type": "string"
+    },
+    "defaultUser": {
+      "type": "string"
+    },
+    "password": {
+      "type": "password"
+    },
+    "subscription": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::subscription.subscription",
+      "inversedBy": "vps_service"
+    },
+    "instanceId": {
+      "type": "string"
+    }
+  }
+}

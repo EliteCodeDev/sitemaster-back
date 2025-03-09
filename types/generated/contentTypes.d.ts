@@ -671,6 +671,10 @@ export interface ApiSubscriptionSubscription
     >;
     instances: Schema.Attribute.Relation<'oneToMany', 'api::instance.instance'>;
     websites: Schema.Attribute.Relation<'oneToMany', 'api::website.website'>;
+    vps_service: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::vps-service.vps-service'
+    >;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -714,6 +718,41 @@ export interface ApiSuportSuport extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::suport.suport'>;
+  };
+}
+
+export interface ApiVpsServiceVpsService extends Struct.CollectionTypeSchema {
+  collectionName: 'vps_services';
+  info: {
+    singularName: 'vps-service';
+    pluralName: 'vps-services';
+    displayName: 'VpsService';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    ip: Schema.Attribute.String;
+    defaultUser: Schema.Attribute.String;
+    password: Schema.Attribute.Password;
+    subscription: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::subscription.subscription'
+    >;
+    instanceId: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::vps-service.vps-service'
+    >;
   };
 }
 
@@ -1143,6 +1182,7 @@ declare module '@strapi/strapi' {
       'api::store.store': ApiStoreStore;
       'api::subscription.subscription': ApiSubscriptionSubscription;
       'api::suport.suport': ApiSuportSuport;
+      'api::vps-service.vps-service': ApiVpsServiceVpsService;
       'api::website.website': ApiWebsiteWebsite;
       'admin::permission': AdminPermission;
       'admin::user': AdminUser;
