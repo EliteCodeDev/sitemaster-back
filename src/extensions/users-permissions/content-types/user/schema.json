@@ -71,12 +71,6 @@
     "phone": {
       "type": "string"
     },
-    "instances": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::instance.instance",
-      "mappedBy": "user"
-    },
     "subscriptions": {
       "type": "relation",
       "relation": "oneToMany",

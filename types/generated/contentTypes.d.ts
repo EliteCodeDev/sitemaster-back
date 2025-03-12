@@ -471,7 +471,6 @@ export interface PluginUsersPermissionsUser
     >;
     name: Schema.Attribute.String;
     phone: Schema.Attribute.String;
-    instances: Schema.Attribute.Relation<'oneToMany', 'api::instance.instance'>;
     subscriptions: Schema.Attribute.Relation<
       'oneToMany',
       'api::subscription.subscription'
@@ -487,50 +486,6 @@ export interface PluginUsersPermissionsUser
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'plugin::users-permissions.user'
-    >;
-  };
-}
-
-export interface ApiInstanceInstance extends Struct.CollectionTypeSchema {
-  collectionName: 'instances';
-  info: {
-    singularName: 'instance';
-    pluralName: 'instances';
-    displayName: 'Instance';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    instanceName: Schema.Attribute.String;
-    apiKey: Schema.Attribute.String;
-    instanceId: Schema.Attribute.String;
-    startDate: Schema.Attribute.DateTime;
-    endDate: Schema.Attribute.DateTime;
-    billingCycle: Schema.Attribute.String;
-    idWoo: Schema.Attribute.Integer;
-    isActive: Schema.Attribute.Boolean;
-    user: Schema.Attribute.Relation<
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
-    server_url: Schema.Attribute.String;
-    subscription: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::subscription.subscription'
-    >;
-    createdAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    publishedAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::instance.instance'
     >;
   };
 }
@@ -629,7 +584,6 @@ export interface ApiSubscriptionSubscription
       'manyToOne',
       'plugin::users-permissions.user'
     >;
-    instances: Schema.Attribute.Relation<'oneToMany', 'api::instance.instance'>;
     websites: Schema.Attribute.Relation<'oneToMany', 'api::website.website'>;
     vps_service: Schema.Attribute.Relation<
       'oneToOne',
@@ -1132,7 +1086,6 @@ declare module '@strapi/strapi' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::instance.instance': ApiInstanceInstance;
       'api::product.product': ApiProductProduct;
       'api::store.store': ApiStoreStore;
       'api::subscription.subscription': ApiSubscriptionSubscription;

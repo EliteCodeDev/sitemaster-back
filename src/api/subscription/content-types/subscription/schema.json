@@ -57,12 +57,6 @@
       "target": "plugin::users-permissions.user",
       "inversedBy": "subscriptions"
     },
-    "instances": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::instance.instance",
-      "mappedBy": "subscription"
-    },
     "websites": {
       "type": "relation",
       "relation": "oneToMany",
